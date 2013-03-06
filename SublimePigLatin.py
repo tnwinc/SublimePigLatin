@@ -30,27 +30,20 @@ def translate_word(word):
     # flag for all caps
     all_caps = word.isupper() and len(word) > 1
 
-    # handle first vowel being a y
-    y_matched = False
-    if word[0] not in VOWELS:
-        y_match = re.search('(y)', word)
-        if y_match:
-            y_start = y_match.start(1)
-            if y_start > 0 and y_start < 4:
-                consonants = y_match.string[0:y_start]
-                word = word[y_start:]
-                y_matched = True
-
     # handle qu
     if word[:2].lower() == 'qu':
         consonants = 'qu'
         word = word[2:]
 
     # grab the consonants
-    if not y_matched:
-        while word[0] not in VOWELS:
-            consonants += word[0]
-            word = word[1:]
+    first_letter = True
+    while word[0] not in VOWELS:
+        # y as a vowel, most likely
+        if first_letter == False and word[0] == 'y':
+            break
+        consonants += word[0]
+        word = word[1:]
+        first_letter = False
 
     # handle capitalization
     if all_caps:
