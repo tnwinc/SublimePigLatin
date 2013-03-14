@@ -37,9 +37,9 @@ def translate_word(word):
 
     # grab the consonants
     first_letter = True
-    while word[0] not in VOWELS:
+    while len(word) > 0 and word[0] not in VOWELS:
         # y as a vowel, most likely
-        if first_letter == False and word[0] == 'y':
+        if first_letter is False and word[0] is 'y':
             break
         consonants += word[0]
         word = word[1:]
@@ -51,7 +51,8 @@ def translate_word(word):
     else:
         if len(consonants) > 0 and not consonants[0].islower():
             consonants = consonants.lower()
-            word = word.capitalize()
+            if len(word) > 0 and word[0].islower():
+                word = word.capitalize()
 
     return ''.join((start_punc, word, consonants, suffix, end_punc))
 
