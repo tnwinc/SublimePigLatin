@@ -4,9 +4,17 @@ Translates English to Pig Latin.
 
 ## Installation
 
+### Sublime Text 2
+
 Open Terminal and run the following:
 
     cd ~/Library/Application\ Support/Sublime\ Text\ 2/Packages && git clone git@github.com:tnwinc/SublimePigLatin.git
+
+### Sublime Text 3
+
+Open Terminal and run the following:
+
+    cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages && git clone git@github.com:tnwinc/SublimePigLatin.git
 
 ## Setup
 
